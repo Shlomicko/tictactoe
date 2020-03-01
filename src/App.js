@@ -1,26 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import GameBoard from './components/gameBoard/board/GameBoard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      occupideSquares: new Map(this.props.game.getBoard()),
+      winnerSquares: []
+    };
+    this.onSquareClicked = this.onSquareClicked.bind(this);
+    this.props.game.onGameEnd = this.onGameEnd.bind(this);
+  }
+
+  onSquareClicked(index){
+    this.props.game.fillSlot(index);
+    this.setState({
+      occupideSquares: new Map(this.props.game.getBoard())
+    });
+  }
+
+  onGameEnd(winner) {
+    console.log(winner);
+    if (winner) {
+      this.setState({
+        winnerSquares: winner.squares,
+        winner
+      });
+    }
+  }
+
+  render(){
+    return(
+      <GameBoard 
+      onSquareClicked={ this.onSquareClicked } 
+      occupideSquares={ this.state.occupideSquares }
+      wonSquares={ this.state.winnerSquares }
+      />
+    )
+  }
+
 }
 
 export default App;

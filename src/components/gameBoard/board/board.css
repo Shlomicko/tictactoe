@@ -1,0 +1,39 @@
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    outline: 1px solid rgba(255, 255, 255, .1);
+    width: 300px;
+}
+
+.square {
+    border: 1px solid rgba(255, 255, 255, .1);
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.square:hover:not(.taken) {
+    background-color: #3e5368;
+    -webkit-transition: background-color 150ms;
+    -ms-transition: background-color 150ms;
+    transition: background-color 150ms;
+}
+
+.taken {
+    background-color: #3e5368;
+}
+
+.taken.won {
+    animation: win infinite alternate ease-in-out .54s;
+}
+
+@keyframes win {
+    0% {
+        background-size: 40%;
+    }
+
+    100% {
+        background-size: 50%;
+    }
+}
