@@ -15,6 +15,7 @@ class Game extends React.Component{
     this.props.game.onGameEnd = this.onGameEnd.bind(this);
 
     this.leaderBoardStorage = new LeaderBoardStorage();
+    this.setPlayersFromParams();
   }
 
   onSquareClicked(index){
@@ -40,6 +41,12 @@ class Game extends React.Component{
         gameOver: false
       });
     }
+  }
+
+  setPlayersFromParams(){
+    const { playerOne, playerTwo } = this.props.match.params;
+    this.props.game.playersManager.addPlayer(playerOne);
+    this.props.game.playersManager.addPlayer(playerTwo);
   }
 
   render(){

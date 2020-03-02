@@ -29,9 +29,7 @@ class FormScreen extends React.Component {
     let { input1, input2 } = this.state;
     this.props.game.playersManager.addPlayer(input1);
     this.props.game.playersManager.addPlayer(input2);
-    this.props.history.push(
-      '/game'
-    );
+    this.props.history.push(`/playerOne/${input1}/playerTwo/${input2}`);
   }
 
   render() {

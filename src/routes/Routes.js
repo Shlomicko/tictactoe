@@ -19,7 +19,7 @@ export default () => {
             return <StartScreen/>;
           }}
         />
-        <Route exact path="/game" render={route => {
+        <Route path="/playerOne/:playerOne/playerTwo/:playerTwo" render={route => {
             return <Game {...route} game={game} />;
           }}
         />
