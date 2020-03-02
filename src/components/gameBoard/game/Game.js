@@ -1,8 +1,9 @@
 import React from 'react';
-import './App.css';
-import GameBoard from './components/gameBoard/board/GameBoard';
+import './Game.css';
+import GameBoard from '../board/GameBoard';
+import LeaderBoardStorage from '../../../store/LeaderBoardStorage';
 
-class App extends React.Component{
+class Game extends React.Component{
 
   constructor(props){
     super(props);
@@ -12,21 +13,31 @@ class App extends React.Component{
     };
     this.onSquareClicked = this.onSquareClicked.bind(this);
     this.props.game.onGameEnd = this.onGameEnd.bind(this);
+
+    this.leaderBoardStorage = new LeaderBoardStorage();
   }
 
   onSquareClicked(index){
-    this.props.game.fillSlot(index);
+    this.props.game.fillSquare(index);
     this.setState({
       occupideSquares: new Map(this.props.game.getBoard())
     });
   }
 
   onGameEnd(winner) {
-    console.log(winner);
+    
+    const gameLeaderBoard = this.leaderBoardStorage.getData();
     if (winner) {
+      this.leaderBoardStorage.update([{name:winner.player.name, winner: true}, gameLeaderBoard]);
       this.setState({
         winnerSquares: winner.squares,
-        winner
+        winner: true,
+        gameOver: true
+      });
+    }else{
+      this.leaderBoardStorage.update([{name:winner.player.name, winner: false}, gameLeaderBoard]);
+      this.setState({
+        gameOver: false
       });
     }
   }
@@ -34,6 +45,7 @@ class App extends React.Component{
   render(){
     return(
       <GameBoard 
+      gameEnded={ this.state.gameOver }
       onSquareClicked={ this.onSquareClicked } 
       occupideSquares={ this.state.occupideSquares }
       wonSquares={ this.state.winnerSquares }
@@ -43,4 +55,4 @@ class App extends React.Component{
 
 }
 
-export default App;
+export default Game;

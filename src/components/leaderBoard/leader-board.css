@@ -1,0 +1,16 @@
+.leader-board {
+    font-size: 1em;
+    font-weight: 300;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.leader-board ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.leader-board ul li {
+    border-bottom: 1px solid #34495e;
+    padding: 20px;
+}

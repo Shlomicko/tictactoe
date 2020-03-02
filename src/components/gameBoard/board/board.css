@@ -2,15 +2,17 @@
 .board {
     display: flex;
     flex-wrap: wrap;
-    outline: 1px solid rgba(255, 255, 255, .1);
-    width: 300px;
+    width: 600px;
+    margin: 80px auto;
 }
 
 .square {
     border: 1px solid rgba(255, 255, 255, .1);
-    height: 100px;
-    width: 100px;
+    height: calc(500px / 3);
+    width: calc(500px / 3);
     cursor: pointer;
+    border-radius: 20px;
+    margin: 5px;
 }
 
 .square:hover:not(.taken) {
@@ -26,6 +28,9 @@
 
 .taken.won {
     animation: win infinite alternate ease-in-out .54s;
+}
+.gameOver{
+    pointer-events: none;
 }
 
 @keyframes win {

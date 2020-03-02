@@ -1,14 +1,11 @@
 import PlayersManager from "./PlayerManager";
-import Player from "./Player";
 
 class GameManager {
 
-  constructor(playerOneName = "Shlomi", playerTwoName = "Offer", onGameEnd) {
+  constructor(onGameEnd) {
     this.playersManager = new PlayersManager();
     this.board = new Map();
     this.onGameEnd = onGameEnd;
-    this.playersManager.addPlayer(new Player(playerOneName));
-    this.playersManager.addPlayer(new Player(playerTwoName));
   }
 
   checkSquares(slots, playerId) {
@@ -71,7 +68,7 @@ class GameManager {
       return this.onGameEnd(winner);
   }
 
-  fillSlot(index) {
+  fillSquare(index) {
     let currentPlayer = this.playersManager.getCurrentPlayer();
     if (this.board.get(index)) {
       return;

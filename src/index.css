@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.action-button {
+  background-color: red;
+  box-shadow: 0 5px 0 darkred;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.action-button:hover {
+  background-color: #ce0606;
+  cursor: pointer;
+}
+.action-button:active {
+  box-shadow: none;
+  top: 5px;
+} 
+
+
+.player1-avatar{
+  background: url("./media/icons8-wolverine-50.png") no-repeat center;
+}
+
+.player2-avatar{
+  background: url("./media/icons8-magneto-50.png") no-repeat center;
+}
+
+.disable-events{
+  pointer-events: none;
+}

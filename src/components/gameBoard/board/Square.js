@@ -3,20 +3,20 @@ import "./board.css";
 
 export const Square = props => {
   let spotTaken = "";
-
-  if (props.occupadoByPlayer) {
-    spotTaken += `taken player${props.occupadoByPlayer}`;
+  const { occupadoByPlayer, index, winner } = props;
+  if (occupadoByPlayer) {
+    spotTaken += `taken player${occupadoByPlayer}-avatar`;
   }
 
-  if (props.winner) {
+  if (winner) {
     spotTaken += " won";
   }
   console.log(props);
   return (
     <div
-      id={`square_${props.index}`}
+      id={`square_${index}`}
       className={`square ${spotTaken}`}
-      onClick={() => props.onSquareClick(props.index)}
+      onClick={() => props.onSquareClick(index)}
     />
   );
 };
