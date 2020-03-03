@@ -15,6 +15,7 @@ class Game extends React.Component{
     this.props.game.onGameEnd = this.onGameEnd.bind(this);
 
     this.leaderBoardStorage = new LeaderBoardStorage();
+    this.props.game.playersManager.clear();
     this.setPlayersFromParams();
   }
 
@@ -36,9 +37,9 @@ class Game extends React.Component{
         gameOver: true
       });
     }else{
-      this.leaderBoardStorage.update([{name:winner.player.name, winner: false}, gameLeaderBoard]);
       this.setState({
-        gameOver: false
+        gameOver: true,
+        winner: false
       });
     }
   }
@@ -53,6 +54,7 @@ class Game extends React.Component{
     return(
       <GameBoard 
       gameEnded={ this.state.gameOver }
+      hasWinner={this.state.winner}
       onSquareClicked={ this.onSquareClicked } 
       occupideSquares={ this.state.occupideSquares }
       wonSquares={ this.state.winnerSquares }

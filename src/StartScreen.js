@@ -8,7 +8,7 @@ class StartScreen extends React.Component {
     return (
       <div className="home-screen">
         <h1>Tic Tac Toe!</h1>
-        <Link className='action-button' to="/game">1 Player</Link>
+        <Link className='action-button' disabled to="/game">1 Player - soon...</Link>
         <Link className='action-button' to="/twoplayers">2 Player</Link>
       </div>
     );
