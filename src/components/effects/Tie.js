@@ -6,8 +6,7 @@ class Tie extends React.Component {
     return (
       <div className="all-wrapper">
         <h1>Its a Tie!</h1>
-
-        <div class="bowtie"></div>
+        <div className="bowtie"></div>
       </div>
     );
   }

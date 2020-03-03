@@ -44,7 +44,8 @@ class FormScreen extends React.Component {
             type="text"
             placeholder="Enter name"
             onChange={e => this.onInputOneChange(e)}
-          ></input>
+          >
+          </input>
         </div>
         <button className="action-button" disabled={disabled} onClick={() => {this.startGame()}} >
           Start
